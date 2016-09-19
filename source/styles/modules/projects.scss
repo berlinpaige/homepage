@@ -1,0 +1,94 @@
+.project--professional {
+  background: #C5E6EF;
+  box-shadow: 0px 15px 40px #ccc;
+  margin: 0 auto;
+  margin-top: 3rem;
+  width: 80%;
+  position: relative;
+  transition: box-shadow 1s;
+
+  &:hover {
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+
+    transition: box-shadow 1s;
+  }
+}
+
+.placeholder {
+  height: 14rem;
+}
+
+.path {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 12%;
+  stroke-width: 10px;
+}
+
+.logo--ryder {
+  width: 60%;
+  height: 15rem;
+  fill: #FFF;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo--hotels {
+  width: 50%;
+  height: 5rem;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.expander--Ryder {
+  display: none;
+
+  &:checked {
+    & ~ .placeholder--Ryder {
+      height: 400px;
+    }
+  
+  }
+}
+
+.expander--Hotels {
+  display: none;
+
+  &:checked {
+    & ~ .placeholder--Hotels {
+      height: 400px;
+    }
+  
+  }
+}
+
+.expander-toggle {
+  background: transparent;
+  background-position: center;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+
+  width: 12%;
+  height: 4rem;
+
+  &:after {
+  content: "More Info";
+  color: #FFF;
+  font-family: 'Playfair Display SC', serif;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  }
+}

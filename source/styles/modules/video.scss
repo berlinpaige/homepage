@@ -1,0 +1,36 @@
+.overlay {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background:url('../../../grid_overlay.png');
+}
+
+.video--container {
+  position: relative;
+}
+
+.video--wrapper {
+  background: #CCC;
+  float: left;
+  padding-top: 66%;
+  position: relative;
+  width: 100%;
+}
+
+.video--image {
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.video--image img {
+  left: 50%;
+  max-width: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) ; 
+}

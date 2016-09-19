@@ -1,0 +1,293 @@
+body {
+  background: #F3F9F9;
+  margin: 0;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  background-repeat: no-repeat; }
+
+.hero {
+  position: relative; }
+
+.image--hero img {
+  width: 100%; }
+
+.heading--hero, .heading--section {
+  font-family: 'Playfair Display SC', serif;
+  color: #99BDDD;
+  text-transform: uppercase;
+  text-align: center;
+  position: absolute;
+  right: 45%;
+  top: 25%; }
+  .heading--hero span, .heading--section span {
+    display: block; }
+  @media (min-width: 46em) {
+    .heading--hero, .heading--section {
+      top: 25%; } }
+
+.section {
+  background: #BBABCF;
+  width: 50%;
+  height: 25rem;
+  margin-top: -4px;
+  position: relative; }
+
+.heading--section {
+  color: #F3F9F9;
+  top: 50%;
+  right: auto;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.work.fixed {
+  position: fixed;
+  top: 0; }
+
+.about {
+  background: #C5E6EF;
+  margin-left: 50%; }
+  .about.fixed {
+    position: fixed;
+    top: 0; }
+
+.about--text {
+  width: 50%; }
+
+.heading--about {
+  color: #2E4E74; }
+
+.contact {
+  background: #99BDDD; }
+  .contact.fixed {
+    position: fixed;
+    top: 0; }
+
+.heading--contact {
+  color: #F3F9F9; }
+
+.heading--home--left {
+  position: absolute;
+  opacity: 1;
+  top: 3rem;
+  right: 50%;
+  transform: translateX(50%); }
+
+.heading--home--right {
+  position: absolute;
+  opacity: 1;
+  right: 50%;
+  transform: translateX(50%);
+  top: 8rem; }
+
+.footer {
+  background: #CFBEB7;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%; }
+
+.selfie {
+  width: 20%;
+  float: right;
+  margin-right: 1rem; }
+
+.project--professional {
+  background: #C5E6EF;
+  box-shadow: 0px 15px 40px #ccc;
+  margin: 0 auto;
+  margin-top: 3rem;
+  width: 80%;
+  position: relative;
+  transition: box-shadow 1s; }
+  .project--professional:hover {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 1s; }
+
+.placeholder {
+  height: 14rem; }
+
+.path {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 12%;
+  stroke-width: 10px; }
+
+.logo--ryder {
+  width: 60%;
+  height: 15rem;
+  fill: #FFF;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.logo--hotels {
+  width: 50%;
+  height: 5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.expander--Ryder {
+  display: none; }
+  .expander--Ryder:checked ~ .placeholder--Ryder {
+    height: 400px; }
+
+.expander--Hotels {
+  display: none; }
+  .expander--Hotels:checked ~ .placeholder--Hotels {
+    height: 400px; }
+
+.expander-toggle {
+  background: transparent;
+  background-position: center;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 12%;
+  height: 4rem; }
+  .expander-toggle:after {
+    content: "More Info";
+    color: #FFF;
+    font-family: 'Playfair Display SC', serif;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+
+.overlay {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background: url("../../../grid_overlay.png"); }
+
+.video--container {
+  position: relative; }
+
+.video--wrapper {
+  background: #CCC;
+  float: left;
+  padding-top: 66%;
+  position: relative;
+  width: 100%; }
+
+.video--image {
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%; }
+
+.video--image img {
+  left: 50%;
+  max-width: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+
+.left-selector {
+  display: none; }
+  .left-selector:checked ~ .left {
+    background: #F3F9F9;
+    width: 100%;
+    transition: background 1s 1s; }
+  .left-selector:checked ~ .heading--home--left {
+    opacity: 0;
+    position: absolute;
+    transform: scale(0.5);
+    z-index: 1;
+    top: 0rem;
+    right: -1rem;
+    transition: transform 1s, top 1s, right 1s, opacity 0.5s 0.5s; }
+  .left-selector:checked ~ .right-toggle {
+    width: 0px; }
+  .left-selector:checked ~ .left-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    left: auto;
+    opacity: 1;
+    right: 1rem;
+    top: 0rem;
+    transition: opacity 0.4s 1s; }
+
+.right-selector {
+  display: none; }
+  .right-selector:checked ~ .right {
+    background: #F3F9F9;
+    width: 100%;
+    transition: background 1s 1s; }
+  .right-selector:checked ~ .heading--home--right {
+    opacity: 0;
+    position: absolute;
+    transform: scale(0.5);
+    z-index: 1;
+    top: 0rem;
+    right: -1rem;
+    transition: transform 1s, top 1s, right 1s, opacity 0.5s 0.5s; }
+  .right-selector:checked ~ .right-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    left: auto;
+    opacity: 1;
+    right: 1rem;
+    top: 0rem;
+    transition: opacity 0.4s 1s; }
+
+.left-toggle {
+  background: #2E4E74;
+  background-position: center;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 0;
+  z-index: 7;
+  opacity: 0;
+  height: 5rem;
+  width: 100%;
+  top: 4rem; }
+
+.right-toggle {
+  background: #2E4E74;
+  background-position: center;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 0;
+  z-index: 7;
+  opacity: 0;
+  height: 5rem;
+  width: 100%;
+  top: 9rem; }
+
+.left {
+  width: 0;
+  background: #FFF;
+  background-size: cover;
+  padding-top: 4rem;
+  position: absolute;
+  top: 0;
+  transition: background 1s 1s; }
+
+.right {
+  width: 0;
+  background: #FFF;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  transition: background 1s 1s; }
+
+.height {
+  height: 3000px; }
+
+/*# sourceMappingURL=styles.css.map */
