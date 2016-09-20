@@ -52,76 +52,14 @@ body {
   }
 }
 
-.section {
-  background: #BBABCF;
-  width: 50%;
-  height: 25rem;
-  margin-top: -4px;
-  position: relative;
+p {
+  font-size: 24px
 }
 
-.heading--section {
-  @extend .heading--hero;
-
-  color: #F3F9F9;
-  top: 50%;
-  right: auto;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.fake {
+  height: 200px;
+  width: 100%;
+  margin: 15px;
+  background: blue;
 }
 
-.work {
-  &.fixed {
-    position: fixed;
-    top: 0;
-  }
-}
-
-.about {
-  background: #C5E6EF;
-  margin-left: 50%;
-
-  &.fixed {
-    position: fixed;
-    top: 0;
-  }
-}
-
-.about--text {
-  width: 50%
-}
-
-.heading--about {
-  color: #2E4E74;
-}
-
-.contact {
-  background: #99BDDD;
-
-  &.fixed {
-    position: fixed;
-    top: 0;
-  }
-}
-
-.heading--contact {
-  color: #F3F9F9;
-}
-
-.heading--home--left {
-  position: absolute;
-  opacity: 1;
-  top: 3rem;
-  right: 50%;
-  transform: translateX(50%);
-
-}
-
-.heading--home--right {
-  position: absolute;
-  opacity: 1;
-  right: 50%;
-  transform: translateX(50%);
-  top: 8rem;
-
-}

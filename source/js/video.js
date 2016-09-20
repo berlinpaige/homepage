@@ -25,12 +25,12 @@ window.requestAnimFrame = (function(){ // reduce CPU consumption, improve perfor
 (function animloop(){ // the smoothest animation loop possible
   requestAnimFrame(animloop);
   if (window.innerWidth > 736) {
-    var scrollTop = $('.main-content').height() - 365 + window.innerHeight*2;
+    var videoTop = $('.main-content').height() - 365 + window.innerHeight*2;
   }
   else {
-    var scrollTop = $('.main-content').height() - 365;
+    var videoTop = $('.main-content').height() - 365;
   }
-  targetStep = Math.max( Math.round( (getYOffset() - scrollTop) / 30 ) , 1 ); // what frame to animate to
+  targetStep = Math.max( Math.round( (getYOffset() - videoTop) / 30 ) , 1 ); // what frame to animate to
   if(targetStep != step ) { step += (targetStep - step) / 5; } // increment the step until we arrive at the target step
   changeFrame();
 })();
@@ -45,14 +45,14 @@ function changeFrame() {
 }
 
 function resizeAdjustments() { // fit everything to the screen
-  var windowWidth = window.innerWidth,
-      windowHeight = window.innerHeight,
+  var windowWidth = window.innerWidth, //yes I'm using this
+      windowHeight = window.innerHeight,  //yes, I'm using this
       scrollExtraHeight = 30 * totalFrames,
       mainContentHeight = $('.main-content').height(),
-      scrollTop = $('.main-content').height() - 365,
+      videoTop = $('.main-content').height() - 365,
       videoHeight = 395,
       imageWidth = 1000,
-      imageHeight = 563;
+      imageHeight = 563;   
 
   $('.video--container').css({"height": videoHeight + 'px', "width": windowWidth}); 
   $('.video--wrapper').css({"padding-top": ((videoHeight/windowWidth)*100) + '%'});
@@ -66,67 +66,68 @@ function resizeAdjustments() { // fit everything to the screen
   }
 
   $(document).scroll(function() {
-    if($(window).scrollTop() > scrollTop) {
-      $('.video--container').css({"position": "fixed", "bottom": "0"});
-      $('.main-content').css({"position": "fixed", "bottom": '0', "padding-bottom": "24rem"});
+    var $scrollTop = $(window).scrollTop(),
+        $workTop = $('.work').offset().top,
+        $aboutTop = $('.about').offset().top,
+        $contactTop = $('.contact').offset().top,
+        $videoContainer = $('.video--container').offset().top,
+        $work = $('.heading--work'),
+        $about = $('.heading--about'),
+        $contact = $('.heading--contact'),
+        $sectionHeading = $('.section--heading'); 
+
+    if($scrollTop < $workTop) {
+      $sectionHeading.removeClass('fixed')
+    }    
+
+    if($scrollTop > $workTop && $scrollTop < $aboutTop - windowHeight) {
+      $work.addClass('fixed')
+      $work.removeClass('absolute--bottom')
     }
-    else {
-      $('.video--container').css({"position": "relative", "bottom": "auto"});
-      $('.main-content').css({"position": "relative", "bottom": "auto", "padding-bottom": "0"});
+
+    if ($scrollTop > $aboutTop - windowHeight) {
+      $about.removeClass('fixed')
+      $work.removeClass('fixed')
+      $work.addClass('absolute--bottom')
     }
+
+    if ($scrollTop > $aboutTop) {
+      $about.removeClass('absolute--bottom')
+      $about.addClass('fixed')
+    }
+
+    if ($scrollTop > $contactTop - windowHeight) {
+      $contact.removeClass('fixed')
+      $about.removeClass('fixed')
+      $about.addClass('absolute--bottom')
+    }
+
+    if ($scrollTop > $contactTop) {
+      $contact.removeClass('absolute--bottom')
+      $contact.addClass('fixed')
+    }
+
+    if ($scrollTop > $videoContainer - 730) {
+      $contact.removeClass('fixed')
+      $contact.addClass('absolute--bottom')
+    }
+
+    //video starts
+    if($scrollTop > videoTop) {
+      console.log('jhgsdfjhsdg')
+    }
+
   });
 
 
   if (window.innerWidth > 736) {
-    var heroHeight = $('.hero').height(),
-        scrollTop = $('.main-content').height() - 365 + windowHeight*2;
 
-    $('.main-content').css({"padding-bottom": "0"});
-
-    $('.scroll-extra-height').css({"height": scrollExtraHeight + mainContentHeight + videoHeight + windowHeight*2 + 'px'});
-
-    $('.section').css({"height": window.innerHeight});
+    $('.section--heading').css({'width': windowWidth/2, 'height': windowHeight, 'line-height': '699px'}) 
+    $('.section').css({'min-height': windowHeight}) 
+ 
 
     $(document).scroll(function() {
-      if($(window).scrollTop() > heroHeight) {
-        $('.work').addClass("fixed");
-        $('.about, .contact, .video--container').css({"margin-top": window.innerHeight});;
-      }
-      else {
-        $('.about, .contact, .video--container').css({"margin-top": "-4px"});;
-        $('.work').removeClass("fixed");
-      }
 
-      if($(window).scrollTop() > heroHeight + window.innerHeight) {
-        $('.about').addClass("fixed").css({"margin-top": "0"});
-        $('.work').removeClass("fixed");
-        $('.work, .contact, .video--container').css({"margin-top": window.innerHeight});;
-      }
-      else {
-        $('.work, .contact, .video--container').css({"margin-top": "-4px"});;
-        $('.about').removeClass("fixed");
-      }
-
-      if($(window).scrollTop() > heroHeight + window.innerHeight*3) {
-        $('.contact').addClass("fixed").css({"margin-top": "0"});
-        $('.about').removeClass("fixed");
-        $('.work, .about, .video--container').css({"margin-top": window.innerHeight});;
-      }
-      else {
-        $('.contact').removeClass("fixed");
-      }
-
-      if($(window).scrollTop() > heroHeight + window.innerHeight*4) {
-        $('.about').css({'background': 'transparent'});
-      }
-      else {
-        $('.about').css({'background': '#C5E6EF'});
-      }
-
-      if($(window).scrollTop() > heroHeight + window.innerHeight*4 + videoHeight) {
-        $('.contact').removeClass("fixed");
-        $('.work, .about, .video--container').css({"margin-top":"-4px"});
-      }
     });
   }
 }
