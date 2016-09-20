@@ -56,6 +56,11 @@ p {
   font-size: 24px
 }
 
+.video--container.fixed {
+  bottom: 0;
+  position: fixed;
+}
+
 .fake {
   height: 200px;
   width: 100%;

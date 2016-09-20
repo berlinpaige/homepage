@@ -66,15 +66,28 @@ function resizeAdjustments() { // fit everything to the screen
   }
 
   $(document).scroll(function() {
+
+  });
+
+
+  if (window.innerWidth > 736) {
+
+    $('.section--heading').css({'width': windowWidth/2, 'height': windowHeight, 'line-height': '699px'}) 
+    $('.section').css({'min-height': windowHeight})
+    $('.video--container').css({'padding-top': windowHeight - 395, 'margin-top': -(windowHeight - 395) -18})
+ 
+
+    $(document).scroll(function() {
     var $scrollTop = $(window).scrollTop(),
         $workTop = $('.work').offset().top,
         $aboutTop = $('.about').offset().top,
         $contactTop = $('.contact').offset().top,
-        $videoContainer = $('.video--container').offset().top,
+        $videoContainerTop = $('.video--container').offset().top,
         $work = $('.heading--work'),
         $about = $('.heading--about'),
         $contact = $('.heading--contact'),
-        $sectionHeading = $('.section--heading'); 
+        $sectionHeading = $('.section--heading'),
+        $videoContain = $('.video--container'); 
 
     if($scrollTop < $workTop) {
       $sectionHeading.removeClass('fixed')
@@ -91,7 +104,7 @@ function resizeAdjustments() { // fit everything to the screen
       $work.addClass('absolute--bottom')
     }
 
-    if ($scrollTop > $aboutTop) {
+    if ($scrollTop > $aboutTop && $scrollTop< $contactTop - windowHeight) {
       $about.removeClass('absolute--bottom')
       $about.addClass('fixed')
     }
@@ -107,28 +120,35 @@ function resizeAdjustments() { // fit everything to the screen
       $contact.addClass('fixed')
     }
 
-    if ($scrollTop > $videoContainer - 730) {
+    if ($scrollTop > $videoContainerTop -395) {
+      console.log('hit it')
       $contact.removeClass('fixed')
       $contact.addClass('absolute--bottom')
     }
 
-    //video starts
-    if($scrollTop > videoTop) {
-      console.log('jhgsdfjhsdg')
+    if ($scrollTop < 4553) {
+      $videoContain.removeClass('fixed')
+      $contact.removeClass('fixedForVideo')
     }
+
+    if ($scrollTop > $videoContainerTop) {
+      $videoContain.addClass('fixed')
+      $contact.addClass('fixedForVideo')
+    }
+
+
+    // //video starts
+    // if($scrollTop > $videoContainer - 365) {
+    //   if (!$videoContain.hasClass('fixed')) {
+    //     $videoContain.addClass('fixed')
+    //   }
+    //   // else {
+    //   //   $videoContain.removeClass('fixed')
+    //   // }
+    // }
 
   });
 
-
-  if (window.innerWidth > 736) {
-
-    $('.section--heading').css({'width': windowWidth/2, 'height': windowHeight, 'line-height': '699px'}) 
-    $('.section').css({'min-height': windowHeight}) 
- 
-
-    $(document).scroll(function() {
-
-    });
   }
 }
 

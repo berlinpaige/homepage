@@ -30,6 +30,10 @@ body {
 p {
   font-size: 24px; }
 
+.video--container.fixed {
+  bottom: 0;
+  position: fixed; }
+
 .fake {
   height: 200px;
   width: 100%;
@@ -259,6 +263,10 @@ p {
 
   .section--heading.fixed {
     position: fixed; }
+
+  .section--heading.fixedForVideo {
+    position: fixed;
+    bottom: 395; }
 
   .section--heading.absolute--bottom {
     bottom: 0;
