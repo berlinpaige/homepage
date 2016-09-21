@@ -22,18 +22,24 @@ window.requestAnimFrame = (function(){ // reduce CPU consumption, improve perfor
       };
 })();
 
-(function animloop(){ // the smoothest animation loop possible
-  requestAnimFrame(animloop);
-  if (window.innerWidth > 736) {
-    var videoTop = $('.main-content').height() - 365 + window.innerHeight*2;
-  }
-  else {
-    var videoTop = $('.main-content').height() - 365;
-  }
-  targetStep = Math.max( Math.round( (getYOffset() - videoTop) / 30 ) , 1 ); // what frame to animate to
-  if(targetStep != step ) { step += (targetStep - step) / 5; } // increment the step until we arrive at the target step
-  changeFrame();
-})();
+$(document).scroll(function(){
+  
+    (function animloop(){ // the smoothest animation loop possible
+      if ($(window).scrollTop() > $('.main-content').height() - 365) {
+        requestAnimFrame(animloop);
+      }
+      else if ($(window).scrollTop() < $('.main-content').height() - 365) {
+        window.cancelAnimationFrame(animloop)
+      }
+
+      var videoTop = $('.main-content').height() - 365;
+      targetStep = Math.max( Math.round( ($(window).scrollTop() - videoTop) / 30 ) , 1 ); // what frame to animate to
+      if(targetStep != step ) { step += (targetStep - step) / 5; } // increment the step until we arrive at the target step
+      changeFrame();
+    console.log($(window).scrollTop())
+    })();
+});
+
 
 function changeFrame() {
   var thisStep = Math.round(step); // calculate the frame number
@@ -56,7 +62,7 @@ function resizeAdjustments() { // fit everything to the screen
 
   $('.video--container').css({"height": videoHeight + 'px', "width": windowWidth}); 
   $('.video--wrapper').css({"padding-top": ((videoHeight/windowWidth)*100) + '%'});
-  $('.scroll-extra-height').css({"height": scrollExtraHeight + mainContentHeight + videoHeight + 'px'});
+  $('.scroll-extra-height').css({"height": scrollExtraHeight + videoHeight + 'px'});
 
   if (imageWidth/imageHeight > window.innerWidth/videoHeight) {
     $('#video').css({"height": videoHeight + 'px', "width": "auto"});
@@ -88,6 +94,8 @@ function resizeAdjustments() { // fit everything to the screen
         $contact = $('.heading--contact'),
         $sectionHeading = $('.section--heading'),
         $videoContain = $('.video--container'); 
+
+        console.log($scrollTop)
 
     if($scrollTop < $workTop) {
       $sectionHeading.removeClass('fixed')
@@ -136,30 +144,9 @@ function resizeAdjustments() { // fit everything to the screen
       $contact.addClass('fixedForVideo')
     }
 
-
-    // //video starts
-    // if($scrollTop > $videoContainer - 365) {
-    //   if (!$videoContain.hasClass('fixed')) {
-    //     $videoContain.addClass('fixed')
-    //   }
-    //   // else {
-    //   //   $videoContain.removeClass('fixed')
-    //   // }
-    // }
-
   });
 
   }
-}
-
-function getYOffset() { // get distance scrolled from the top
-    var pageY;
-  if(typeof(window.pageYOffset)=='number') {
-    pageY=window.pageYOffset;
-  }else{
-    pageY=document.documentElement.scrollTop; // IE
-  }
-  return pageY;
 }
 
 function pad(number, length) { // pad numbers with leading zeros for JPEG sequence file names
