@@ -1,0 +1,17 @@
+.hero--wrapper {
+  @extend .video--wrapper;
+  float: none;
+  padding-top: 50%;
+}
+
+.hero--image {
+  @extend .video--image;
+}
+
+.heading--hero {
+  position: absolute;
+  color: #E2E2E2;
+  top: 3rem;
+  left: 3rem;
+  z-index: 3;
+}

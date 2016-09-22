@@ -25,18 +25,18 @@ window.requestAnimFrame = (function(){ // reduce CPU consumption, improve perfor
 $(document).scroll(function(){
   
     (function animloop(){ // the smoothest animation loop possible
-      if ($(window).scrollTop() > $('.main-content').height() - 365) {
+      if ($(window).scrollTop() > $('.main-content').height() - 300) {
         requestAnimFrame(animloop);
       }
-      else if ($(window).scrollTop() < $('.main-content').height() - 365) {
+      else if ($(window).scrollTop() < $('.main-content').height() - 300) {
         window.cancelAnimationFrame(animloop)
       }
 
-      var videoTop = $('.main-content').height() - 365;
+      var videoTop = $('.main-content').height() - 300;
       targetStep = Math.max( Math.round( ($(window).scrollTop() - videoTop) / 30 ) , 1 ); // what frame to animate to
       if(targetStep != step ) { step += (targetStep - step) / 5; } // increment the step until we arrive at the target step
       changeFrame();
-    console.log($(window).scrollTop())
+    // console.log($(window).scrollTop())
     })();
 });
 
@@ -55,7 +55,7 @@ function resizeAdjustments() { // fit everything to the screen
       windowHeight = window.innerHeight,  //yes, I'm using this
       scrollExtraHeight = 30 * totalFrames,
       mainContentHeight = $('.main-content').height(),
-      videoTop = $('.main-content').height() - 365,
+      videoTop = $('.main-content').height() - 300,
       videoHeight = 395,
       imageWidth = 1000,
       imageHeight = 563;   
@@ -70,11 +70,6 @@ function resizeAdjustments() { // fit everything to the screen
   else {
     $('#video').css({"height": "auto", "width": window.innerWidth}); 
   }
-
-  $(document).scroll(function() {
-
-  });
-
 
   if (window.innerWidth > 736) {
 
@@ -95,7 +90,8 @@ function resizeAdjustments() { // fit everything to the screen
         $sectionHeading = $('.section--heading'),
         $videoContain = $('.video--container'); 
 
-        console.log($scrollTop)
+        // console.log($scrollTop)
+        // console.log($('.main-content').height())
 
     if($scrollTop < $workTop) {
       $sectionHeading.removeClass('fixed')
@@ -128,13 +124,17 @@ function resizeAdjustments() { // fit everything to the screen
       $contact.addClass('fixed')
     }
 
-    if ($scrollTop > $videoContainerTop -395) {
+    if ($scrollTop > $videoContainerTop -300) {
       console.log('hit it')
       $contact.removeClass('fixed')
       $contact.addClass('absolute--bottom')
     }
 
-    if ($scrollTop < 4553) {
+    console.log($scrollTop)
+    console.log($videoContainerTop)
+
+    if ($scrollTop < 4228) {
+      console.log('less than')
       $videoContain.removeClass('fixed')
       $contact.removeClass('fixedForVideo')
     }
@@ -142,6 +142,12 @@ function resizeAdjustments() { // fit everything to the screen
     if ($scrollTop > $videoContainerTop) {
       $videoContain.addClass('fixed')
       $contact.addClass('fixedForVideo')
+
+      // if ($scrollTop < 4138) {
+      //   console.log('less than')
+      //   $videoContain.removeClass('fixed')
+      //   $contact.removeClass('fixedForVideo')
+      // }
     }
 
   });
