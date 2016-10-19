@@ -8,8 +8,19 @@ body {
   background-repeat: no-repeat;
   overflow-x: hidden; }
 
+h1 {
+  font-family: 'Muli', sans-serif; }
+
 p {
-  font-size: 24px; }
+  font-size: 24px;
+  font-family: 'Muli', sans-serif; }
+
+a {
+  text-decoration: none;
+  display: block;
+  font-size: 24px;
+  font-family: 'Muli', sans-serif;
+  color: #FFF; }
 
 .video--container.fixed {
   bottom: 0;
@@ -137,8 +148,7 @@ p {
 
 .hero--wrapper {
   float: none;
-  padding-top: 50%;
-  margin-bottom: 0; }
+  padding-top: 50%; }
 
 .heading--hero {
   position: absolute;
@@ -243,6 +253,10 @@ p {
 .height {
   height: 3000px; }
 
+.content--contact.fixedForVideo {
+  position: fixed;
+  bottom: 395px; }
+
 @media screen and (min-width: 736px) {
   .section {
     position: relative; }
@@ -264,9 +278,9 @@ p {
       color: #FFF;
       z-index: 2; }
 
-  .section--heading.fixed {
+  .section.fixed .section--heading {
     position: fixed; }
-    .section--heading.fixed:after {
+    .section.fixed .section--heading:after {
       content: '';
       top: 0;
       left: 0;
@@ -293,11 +307,27 @@ p {
     100% {
       transform: scale(90);
       opacity: 0.6; } }
-  .section--heading.fixedForVideo {
+  .about.fixed .heading--about:after {
+    background: #1A2980;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #1A2980, #26D0CE);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #1A2980, #26D0CE);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+
+  .contact.fixed .heading--contact:after {
+    background: #4CA1AF;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #4CA1AF, #C4E0E5);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #4CA1AF, #C4E0E5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+
+  .section.fixedForVideo .section--heading {
     position: fixed;
     bottom: 395; }
 
-  .section--heading.absolute--bottom {
+  .section.absolute--bottom .section--heading {
     bottom: 0;
     top: auto; }
 
@@ -308,22 +338,6 @@ p {
     background: #4f4a4e;
     right: 0; }
 
-  .heading--about.fixed:after {
-    background: #1A2980;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #1A2980, #26D0CE);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #1A2980, #26D0CE);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
-
-  .heading--contact.fixed:after {
-    background: #4CA1AF;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #4CA1AF, #C4E0E5);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #4CA1AF, #C4E0E5);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
-
   .heading--contact {
     background: #464245; }
 
@@ -332,6 +346,12 @@ p {
     width: 40%; }
 
   .content--contact {
-    padding-left: 60%; } }
+    padding: 30rem 0;
+    padding-left: 55%; }
+
+  .link--contact {
+    padding-top: 1.5rem; }
+    .link--contact i {
+      padding-right: 1rem; } }
 
 /*# sourceMappingURL=styles.css.map */

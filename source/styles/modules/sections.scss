@@ -1,3 +1,9 @@
+.content--contact.fixedForVideo {
+  position: fixed;
+  bottom: 395px;
+}
+
+
 @media screen and (min-width: 736px) {
   .section {
     position: relative;
@@ -21,22 +27,24 @@
       z-index: 2;
     }
   }
-  .section--heading.fixed {
-    position: fixed;
+  .section.fixed {
+    .section--heading {
+      position: fixed;
 
-    &:after {
-      content: '';
-      top: 0;
-      left: 0;
-      position: absolute;
-      width: 4%;
-      height: 4%;
-      background: #1D2B64; /* fallback for old browsers */
-      background: -webkit-linear-gradient(to left, #1D2B64 , #F8CDDA); /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to left, #1D2B64 , #F8CDDA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */     
-      opacity: 0.4;
-      border-radius: 50%;
-      animation: ripple 2s forwards;
+      &:after {
+        content: '';
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 4%;
+        height: 4%;
+        background: #1D2B64; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #1D2B64 , #F8CDDA); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #1D2B64 , #F8CDDA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */     
+        opacity: 0.4;
+        border-radius: 50%;
+        animation: ripple 2s forwards;
+      }
     }
   }
 
@@ -56,14 +64,39 @@
     }
 }
 
-  .section--heading.fixedForVideo {
-    position: fixed;
-    bottom: 395;
+  .about.fixed {
+    .heading--about {
+      &:after {
+        background: #1A2980; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #1A2980 , #26D0CE); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #1A2980 , #26D0CE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+    }
   }
 
-  .section--heading.absolute--bottom {
-    bottom: 0;
-    top: auto;
+  .contact.fixed {
+     .heading--contact {
+      &:after {
+        background: #4CA1AF; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #4CA1AF , #C4E0E5); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #4CA1AF , #C4E0E5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+    }
+  }
+
+
+  .section.fixedForVideo {
+    .section--heading {
+      position: fixed;
+      bottom: 395;
+    }
+  }
+
+  .section.absolute--bottom {
+    .section--heading {
+      bottom: 0;
+      top: auto;
+    }
   }
 
   .heading--work {
@@ -75,21 +108,6 @@
     right: 0;
   }
 
-  .heading--about.fixed {
-    &:after {
-      background: #1A2980; /* fallback for old browsers */
-      background: -webkit-linear-gradient(to left, #1A2980 , #26D0CE); /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to left, #1A2980 , #26D0CE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    }
-  }
-
-   .heading--contact.fixed {
-    &:after {
-      background: #4CA1AF; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #4CA1AF , #C4E0E5); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #4CA1AF , #C4E0E5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    }
-  }
 
   .heading--contact {
     background: #464245;
@@ -101,6 +119,17 @@ background: linear-gradient(to left, #4CA1AF , #C4E0E5); /* W3C, IE 10+/ Edge, F
   }
 
   .content--contact {
-    padding-left: 60%
+    padding: 30rem 0;
+    padding-left: 55%;
   }
+
+  .link--contact {
+    padding-top: 1.5rem;
+
+    i {
+      padding-right: 1rem;
+    }
+  }
+
+
 }
